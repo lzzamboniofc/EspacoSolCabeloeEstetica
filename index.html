@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0c0f13">
+  <meta name="format-detection" content="telephone=no">
   <meta name="description" content="Espaço Sol Cabelo & Estética em Itu. Cuidado, beleza e bem-estar em um ambiente acolhedor. Agende seu horário pelo WhatsApp.">
   <meta property="og:title" content="Espaço Sol | Cabelo & Estética">
   <meta property="og:description" content="Beleza, cuidado e autoestima em um só espaço, em Itu - SP.">
@@ -15,6 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <script type="application/ld+json" id="business-schema"></script>
 </head>
 <body>
   <div class="site-noise" aria-hidden="true"></div>
@@ -105,6 +107,24 @@
       </div>
     </section>
 
+    <section class="section values" id="diferenciais">
+      <div class="container">
+        <div class="section-head values-head reveal">
+          <div>
+            <span class="eyebrow dark"><i></i> Diferenciais</span>
+            <h2>O cuidado também está nos <em>detalhes.</em></h2>
+          </div>
+          <p>Uma experiência pensada para deixar o contato, a escolha do serviço e o agendamento mais simples desde o primeiro acesso.</p>
+        </div>
+        <div class="value-grid">
+          <article class="value-card reveal" style="--d:0ms"><span>01</span><h3>Atendimento próximo</h3><p>Um contato direto para entender o que você procura antes mesmo de chegar ao espaço.</p></article>
+          <article class="value-card reveal" style="--d:70ms"><span>02</span><h3>Agendamento simples</h3><p>Escolha o cuidado desejado e vá direto ao WhatsApp com uma mensagem já preparada.</p></article>
+          <article class="value-card reveal" style="--d:140ms"><span>03</span><h3>Cuidado integrado</h3><p>Cabelo, estética e autocuidado reunidos em uma experiência leve e conveniente.</p></article>
+          <article class="value-card reveal" style="--d:210ms"><span>04</span><h3>Seu momento</h3><p>Uma proposta acolhedora, com atenção ao conforto e aos detalhes da sua experiência.</p></article>
+        </div>
+      </div>
+    </section>
+
     <section class="section experience" id="experiencia">
       <div class="container experience-grid">
         <div class="experience-copy reveal">
@@ -145,6 +165,18 @@
       </div>
     </section>
 
+    <section class="section faq" id="duvidas">
+      <div class="container faq-grid">
+        <div class="faq-intro reveal">
+          <span class="eyebrow"><i></i> Dúvidas frequentes</span>
+          <h2>Antes de agendar, talvez você queira saber.</h2>
+          <p>Informações rápidas para facilitar seu contato. Quando precisar, o WhatsApp continua sendo o canal mais direto.</p>
+          <a class="text-link faq-link" data-whatsapp href="#contato">Falar com o Espaço Sol <span>↗</span></a>
+        </div>
+        <div class="faq-list" id="faq-list"></div>
+      </div>
+    </section>
+
     <section class="section location" id="localizacao">
       <div class="container">
         <div class="section-head reveal">
@@ -158,7 +190,7 @@
             <iframe id="map-frame" title="Mapa do Espaço Sol" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
           </div>
           <div class="location-card">
-            <span class="location-number">02</span>
+            <span class="location-number">03</span>
             <p class="muted">Espaço Sol Cabelo & Estética</p>
             <h3 id="address-text">Rua Francisco Falcato Júnior, 416<br>São Luiz • Itu - SP</h3>
             <div class="location-links">
@@ -196,6 +228,42 @@
   <a class="whatsapp-float" data-whatsapp href="#" aria-label="Agendar pelo WhatsApp">
     <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19.11 17.21c-.31-.16-1.84-.91-2.13-1.01-.29-.11-.5-.16-.71.16-.21.31-.82 1.01-1 1.22-.18.21-.37.24-.68.08-.31-.16-1.32-.49-2.52-1.56-.93-.83-1.56-1.86-1.74-2.17-.18-.31-.02-.48.14-.64.14-.14.31-.37.47-.55.16-.18.21-.31.31-.52.11-.21.05-.39-.03-.55-.08-.16-.71-1.72-.97-2.35-.26-.62-.52-.54-.71-.55h-.6c-.21 0-.55.08-.84.39-.29.31-1.1 1.07-1.1 2.62 0 1.54 1.13 3.04 1.28 3.25.16.21 2.22 3.39 5.38 4.75.75.32 1.34.52 1.8.66.76.24 1.44.21 1.98.13.6-.09 1.84-.75 2.1-1.48.26-.73.26-1.36.18-1.49-.08-.13-.29-.21-.6-.37zM16.04 27h-.01a11.02 11.02 0 01-5.61-1.54l-.4-.24-4.17 1.09 1.11-4.07-.26-.42A11.04 11.04 0 115.01 16c0 1.94.51 3.84 1.49 5.5l.17.28-.66 2.43 2.49-.65.27.16A8.98 8.98 0 1016.04 7a9 9 0 000 18z"/></svg>
   </a>
+
+
+  <nav class="mobile-actions" aria-label="Ações rápidas">
+    <a data-whatsapp href="#" aria-label="Agendar pelo WhatsApp">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19.11 17.21c-.31-.16-1.84-.91-2.13-1.01-.29-.11-.5-.16-.71.16-.21.31-.82 1.01-1 1.22-.18.21-.37.24-.68.08-.31-.16-1.32-.49-2.52-1.56-.93-.83-1.56-1.86-1.74-2.17-.18-.31-.02-.48.14-.64.14-.14.31-.37.47-.55.16-.18.21-.31.31-.52.11-.21.05-.39-.03-.55-.08-.16-.71-1.72-.97-2.35-.26-.62-.52-.54-.71-.55h-.6c-.21 0-.55.08-.84.39-.29.31-1.1 1.07-1.1 2.62 0 1.54 1.13 3.04 1.28 3.25.16.21 2.22 3.39 5.38 4.75.75.32 1.34.52 1.8.66.76.24 1.44.21 1.98.13.6-.09 1.84-.75 2.1-1.48.26-.73.26-1.36.18-1.49-.08-.13-.29-.21-.6-.37zM16.04 27h-.01a11.02 11.02 0 01-5.61-1.54l-.4-.24-4.17 1.09 1.11-4.07-.26-.42A11.04 11.04 0 115.01 16c0 1.94.51 3.84 1.49 5.5l.17.28-.66 2.43 2.49-.65.27.16A8.98 8.98 0 1016.04 7a9 9 0 000 18z"/></svg>
+      <span>WhatsApp</span>
+    </a>
+    <a data-instagram href="#" target="_blank" rel="noopener" aria-label="Abrir Instagram">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.7" r="1" class="fill-dot"/></svg>
+      <span>Instagram</span>
+    </a>
+    <a data-maps href="#" target="_blank" rel="noopener" aria-label="Abrir localização no mapa">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6-5.1 6-11a6 6 0 10-12 0c0 5.9 6 11 6 11z"/><circle cx="12" cy="10" r="2"/></svg>
+      <span>Como chegar</span>
+    </a>
+  </nav>
+
+  <div class="service-modal" id="service-modal" aria-hidden="true">
+    <button class="service-modal-backdrop" type="button" data-modal-close tabindex="-1" aria-label="Fechar detalhes do serviço"></button>
+    <section class="service-sheet" role="dialog" aria-modal="true" aria-labelledby="service-modal-title" aria-describedby="service-modal-description">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <button class="service-modal-close" type="button" data-modal-close aria-label="Fechar">
+        <span></span><span></span>
+      </button>
+      <span class="service-modal-number" id="service-modal-number">01</span>
+      <div class="service-modal-icon" id="service-modal-icon" aria-hidden="true"></div>
+      <span class="eyebrow"><i></i> Serviço</span>
+      <h2 id="service-modal-title"></h2>
+      <p id="service-modal-description"></p>
+      <div class="service-highlights" id="service-highlights"></div>
+      <div class="service-modal-actions">
+        <a class="btn btn-primary" id="service-modal-whatsapp" href="#" target="_blank" rel="noopener">Consultar pelo WhatsApp <span>↗</span></a>
+        <button class="service-modal-secondary" type="button" data-modal-close>Continuar explorando</button>
+      </div>
+    </section>
+  </div>
 
   <script src="assets/js/config.js"></script>
   <script src="assets/js/main.js"></script>
