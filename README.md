@@ -14,11 +14,17 @@ Ali você pode alterar:
 - WhatsApp e mensagem geral;
 - Instagram;
 - endereço;
+- horário de funcionamento;
 - serviços e detalhes de cada serviço;
 - mensagem específica de WhatsApp para cada serviço;
 - perguntas e respostas do FAQ.
 
 ## Melhorias incluídas nesta versão
+- numerações decorativas sem função removidas;
+- galeria com 6 trabalhos reais fornecidos para o projeto;
+- visualização ampliada das fotos em lightbox;
+- horário de funcionamento exibido na seção de localização;
+- horários também incluídos nos dados estruturados para SEO local;
 - cards de serviços com painel de detalhes;
 - WhatsApp contextual de acordo com o serviço selecionado;
 - barra fixa mobile com WhatsApp, Instagram e rota;
@@ -26,14 +32,20 @@ Ali você pode alterar:
 - FAQ em accordion;
 - microanimações e transições suaves;
 - dados estruturados `BeautySalon` para SEO local;
-- acessibilidade de teclado no modal e no FAQ;
+- acessibilidade de teclado nos modais, galeria e FAQ;
 - layout mobile-first, com adaptações progressivas para tablet e desktop.
 
-## Observação importante
-Os serviços e textos de procedimentos exibidos no protótipo são sugestões para apresentação comercial. Confirme com o estabelecimento quais procedimentos realmente oferece antes da publicação definitiva.
+## Imagens
+A logo otimizada está em `assets/img/logo.webp`.
 
-## Imagem
-A logo enviada foi otimizada em WebP e está em `assets/img/logo.webp`.
+As imagens de trabalhos estão em:
+
+`assets/img/trabalhos/`
+
+Elas foram convertidas para WebP para reduzir o peso sem perder a apresentação visual.
+
+## Observação importante
+Os serviços e textos de procedimentos exibidos no protótipo continuam sendo sugestões para apresentação comercial. Confirme com o estabelecimento quais procedimentos realmente oferece antes da publicação definitiva.
 
 ## Responsividade
 A folha de estilos parte do layout para celulares e evolui por breakpoints para tablet e desktop. A antiga faixa animada (marquee) permanece removida para manter a navegação mais limpa e leve no mobile.

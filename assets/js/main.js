@@ -29,6 +29,15 @@
     addressText.innerHTML = cfg.address.replace(' - São Luiz, ', '<br>São Luiz • ');
   }
 
+  const hoursList = $('#hours-list');
+  if (hoursList && Array.isArray(cfg.openingHours)) {
+    hoursList.innerHTML = cfg.openingHours.map(item => `
+      <div class="hours-row${item.closed ? ' is-closed' : ''}">
+        <span>${item.day}</span><strong>${item.hours}</strong>
+      </div>
+    `).join('');
+  }
+
   // Structured data for local discovery / SEO
   const schema = $('#business-schema');
   if (schema && cfg.businessName) {
@@ -41,7 +50,21 @@
       address: {
         '@type': 'PostalAddress',
         ...(cfg.addressParts || {})
-      }
+      },
+      openingHoursSpecification: [
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+          opens: '08:00',
+          closes: '19:00'
+        },
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Saturday'],
+          opens: '08:00',
+          closes: '18:00'
+        }
+      ]
     });
   }
 
@@ -59,7 +82,7 @@
   if (serviceGrid && Array.isArray(cfg.services)) {
     serviceGrid.innerHTML = cfg.services.map((s, i) => `
       <article class="service-card reveal" style="--d:${i * 70}ms">
-        <div class="service-top"><span class="service-num">${s.number}</span><span class="service-icon">${icons[s.icon] || icons.star}</span></div>
+        <div class="service-top"><span class="service-icon">${icons[s.icon] || icons.star}</span></div>
         <h3>${s.title}</h3><p>${s.text}</p>
         <button class="service-more" type="button" data-service-index="${i}" aria-label="Ver detalhes de ${s.title}">Ver detalhes <span>→</span></button>
       </article>
@@ -69,7 +92,6 @@
   const modal = $('#service-modal');
   const modalTitle = $('#service-modal-title');
   const modalDescription = $('#service-modal-description');
-  const modalNumber = $('#service-modal-number');
   const modalIcon = $('#service-modal-icon');
   const modalHighlights = $('#service-highlights');
   const modalWhatsApp = $('#service-modal-whatsapp');
@@ -91,7 +113,6 @@
     modalReturnFocus = trigger || document.activeElement;
     modalTitle.textContent = service.title;
     modalDescription.textContent = service.detail || service.text;
-    modalNumber.textContent = service.number;
     modalIcon.innerHTML = icons[service.icon] || icons.star;
     modalHighlights.innerHTML = (service.highlights || []).map(item => `<span>${item}</span>`).join('');
     modalWhatsApp.href = whatsappUrl(service.whatsappMessage || `Olá! Vim pelo site do Espaço Sol e gostaria de saber mais sobre ${service.title}.`);
@@ -112,7 +133,6 @@
     faqList.innerHTML = cfg.faqs.map((item, i) => `
       <article class="faq-item reveal" style="--d:${i * 55}ms">
         <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-${i}">
-          <span>${String(i + 1).padStart(2, '0')}</span>
           <strong>${item.question}</strong>
           <i aria-hidden="true"></i>
         </button>
@@ -138,6 +158,40 @@
     });
   }
 
+  // Work gallery lightbox
+  const imageLightbox = $('#image-lightbox');
+  const lightboxImage = $('#image-lightbox-img');
+  let lightboxReturnFocus = null;
+
+  const closeImageLightbox = () => {
+    if (!imageLightbox?.classList.contains('is-open')) return;
+    imageLightbox.classList.remove('is-open');
+    imageLightbox.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('lightbox-open');
+    if (lightboxImage) {
+      lightboxImage.src = '';
+      lightboxImage.alt = '';
+    }
+    const focusTarget = lightboxReturnFocus;
+    lightboxReturnFocus = null;
+    window.setTimeout(() => focusTarget?.focus(), 180);
+  };
+
+  $$('[data-lightbox]').forEach(button => {
+    button.addEventListener('click', () => {
+      if (!imageLightbox || !lightboxImage) return;
+      const sourceImage = $('img', button);
+      lightboxReturnFocus = button;
+      lightboxImage.src = button.dataset.lightbox;
+      lightboxImage.alt = sourceImage?.alt || 'Trabalho do Espaço Sol';
+      imageLightbox.classList.add('is-open');
+      imageLightbox.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('lightbox-open');
+      window.requestAnimationFrame(() => $('.image-lightbox-close', imageLightbox)?.focus());
+    });
+  });
+  $$('[data-lightbox-close]').forEach(button => button.addEventListener('click', closeImageLightbox));
+
   // Mobile menu
   const navToggle = $('.nav-toggle');
   const nav = $('.main-nav');
@@ -154,11 +208,17 @@
   $$('.main-nav a').forEach(a => a.addEventListener('click', closeNav));
   window.addEventListener('resize', () => { if (innerWidth > 900) closeNav(); });
 
-  // Keyboard behavior: modal has priority over navigation.
+  // Keyboard behavior: overlays have priority over navigation.
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
-      if (modal?.classList.contains('is-open')) closeServiceModal();
+      if (imageLightbox?.classList.contains('is-open')) closeImageLightbox();
+      else if (modal?.classList.contains('is-open')) closeServiceModal();
       else closeNav();
+      return;
+    }
+    if (e.key === 'Tab' && imageLightbox?.classList.contains('is-open')) {
+      e.preventDefault();
+      $('.image-lightbox-close', imageLightbox)?.focus();
       return;
     }
     if (e.key === 'Tab' && modal?.classList.contains('is-open')) {
